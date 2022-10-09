@@ -85,7 +85,58 @@ function posicion(list, item) {
   else return posicion(list.rest, item - 1);
 }
 
-console.log(arrayALista([1, 2, 3]));
-console.log(listaAArray(arrayALista([1, 2, 3])));
-console.log(preceder(10, preceder(20, preceder(30, null))));
-console.log(posicion(arrayALista([1, 2, 3]), 0));
+// console.log(arrayALista([1, 2, 3]));
+// console.log(listaAArray(arrayALista([1, 2, 3])));
+// console.log(preceder(10, preceder(20, preceder(30, null))));
+// console.log(posicion(arrayALista([1, 2, 3]), 0));
+
+//Ejercicio 4
+//Libro
+function deepEqual(a, b) {
+  if (a === b) return true;
+  
+  if (a == null || typeof a != "object" ||
+      b == null || typeof b != "object") return false;
+
+  let keysA = Object.keys(a), keysB = Object.keys(b);
+
+  if (keysA.length != keysB.length) return false;
+
+  for (let key of keysA) {
+    if (!keysB.includes(key) || !deepEqual(a[key], b[key])) return false;
+  }
+
+  return true;
+}
+
+let obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+// → true
+console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
+
+//Mio
+const igualdadProfunda = (a, b) => {
+  if (a === b) {
+    console.log("1");
+    return true;
+  } else if (typeof a.here === typeof b.here) {
+    console.log("2");
+    return true;
+  } else {
+    console.log("3");
+    return false;
+  }
+};
+
+
+
+let obj2 = { here: { is: "an" }, object: 2 };
+
+console.log(igualdadProfunda(obj, obj));
+
+console.log(igualdadProfunda(obj, { here: 1, object: 2 }));
+
+console.log(igualdadProfunda(obj, { here: { is: "an" }, object: 2 }));
