@@ -30,7 +30,7 @@ function everyAnder(array, test) {
   if (array.length <= 0) {
     array[0] = 0;
   }
-  
+
   for (const element of array) {
     if (test(element)) {
       com = true;
@@ -46,5 +46,8 @@ function everyAnder(array, test) {
 // console.log(everyAnder([], (n) => n < 10));
 
 function everySome(array, test) {
-  
+  return !array.some((n) => !test(n));
 }
+
+// console.log(everySome([2, 22, 2], (n) => n < 10));
+// console.log(!(!true || !false || !true));
