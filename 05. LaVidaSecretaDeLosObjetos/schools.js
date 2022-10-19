@@ -57,7 +57,6 @@ class privateClasses {
   }
 }
 
-
 // Professors
 let mate = new Professor("Nestor", "Math");
 mate.introduceSelf();
