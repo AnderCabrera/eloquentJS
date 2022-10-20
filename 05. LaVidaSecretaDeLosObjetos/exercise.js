@@ -1,4 +1,4 @@
-class Grupo {
+class Mapp {
   datos;
 
   constructor() {
@@ -35,7 +35,7 @@ class Grupo {
   }
 }
 
-let grupo = new Grupo();
+let grupo = new Mapp();
 
 console.log(grupo.from([10, 20]));
 console.log(grupo.has(10));

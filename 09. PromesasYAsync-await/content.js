@@ -28,11 +28,9 @@ function arithmeticOperation(nums) {
 }
 
 let azar = arithmeticOperation([10, 10, 20]);
-azar.then((nums) => {
-  let result = 0;
-  nums.reduce((a, b) => (result = a + b));
-  console.log(result);
-});
+azar
+  .then((nums) => nums.reduce((a, b) => a + b))
+  .then((res) => console.log(res));
 
 // Demora con promesa
 function delay(ms) {
@@ -44,7 +42,7 @@ delayPromise.then(() => console.log("Runs after 3s"));
 
 function greeting(delay) {
   return new Promise((resolve, reject) => {
-      setTimeout(resolve, delay)
+    setTimeout(resolve, delay);
   });
 }
 
@@ -57,3 +55,19 @@ greeting(1000)
 //                       Fetch
 // ====================================================
 
+class Thenable {
+  constructor(num) {
+    this.num = num;
+  }
+  then(resolve, reject) {
+    console.log(resolve); // function() { código nativo }
+    // resolve con this.num*2 después de 1 segundo
+    setTimeout(() => resolve(this.num * 2), 500); // (**)
+  }
+}
+
+new Promise((resolve) => resolve(1))
+  .then((result) => {
+    return new Thenable(result); // (*)
+  })
+  .then(console.log); // muestra 2 después de 1000 ms
