@@ -1,15 +1,5 @@
 let url = "https://apii.github.com/users";
 
-// fetch(url)
-//   .then((response) => response.json())
-//   .then((json) => console.log(json));
-// .then((githubUser) => {
-//   let img = document.createElement("img");
-//   img.src = githubUser.avatar_url;
-//   img.setAttribute('class', 'img')
-//   document.body.appendChild(img);
-// });
-
 function getImgProfile(user) {
   return fetch(url)
   .then(() => fetch(`${url}/${user}`))
@@ -42,4 +32,4 @@ function getImgProfile(user) {
   })
 }
   
-  getImgProfile("andercabrera");
+  getImgProfile("jeresig");
