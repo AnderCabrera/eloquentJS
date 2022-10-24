@@ -30,7 +30,7 @@ Promise.race([
 // Promisify
 
 function sum(num1, num2, callback) {
-  if (!num1 || !num2) return callback(new Error("Ingresa los numeros"));
+  if (!num1 || !num2) return callback(new Error("Ingresa los numeros"), null);
   return callback(null, num1 + num2);
 }
 
@@ -50,7 +50,7 @@ function promisify(f) {
 
 let sumaa = promisify(sum);
 
-sumaa(11, 11)
+sumaa(11)
   .catch(err => console.log(err))
-  .then((res) => res)
-  .then(console.log)
+  .then((res) => console.log(res))
+
